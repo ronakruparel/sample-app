@@ -1,8 +1,28 @@
 .carousel {
+  position: relative;
   display: block;
   margin: 0 auto;
   width: 80%;
   min-height: 300px;
   box-shadow: 2px 2px 2px 2px;
   text-align: center;
+}
+.logout {
+  float: right;
+}
+
+.dotsWrappper {
+  position: absolute;
+  bottom: 10px;
+  align-items: center;
+}
+.dots {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 2px 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
 }

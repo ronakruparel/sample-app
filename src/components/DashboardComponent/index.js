@@ -2,21 +2,38 @@ import React, { Fragment } from "react";
 import "./style.css";
 const DashboardComponent = ({
   handleDropdown,
-  selectedNumber,
+  currentSlide,
   handleFinish,
   showOptions,
   handleLogout,
-  carousel
+  carousel,
+  dots
 }) => {
   return (
     <Fragment>
       <div>
         <div>
-          <select onChange={handleDropdown}>{showOptions()}</select>
+          <select onChange={handleDropdown}>
+            <option selected="selected">Select</option>
+            {showOptions()}
+          </select>
         </div>
-        <div className="carousel">{carousel()}</div>
+        <button onClick={handleLogout} className="logout">
+          Logout
+        </button>
+        {currentSlide > 0 && (
+          <div className="carousel">
+            {
+              <div>
+                {carousel()}
+                {currentSlide}
+              </div>
+            }
+            <div className="dotsWrappper">{dots()}</div>
+          </div>
+        )}
+
         <button onClick={handleFinish}>Finish</button>
-        <button onClick={handleLogout}>Logout</button>
       </div>
     </Fragment>
   );

@@ -3,7 +3,8 @@ import { withRouter } from "react-router-dom";
 import { DashboardComponent } from "../../components";
 class Dashboard extends React.Component {
   state = {
-    selectedNumber: 1
+    selectedNumber: null,
+    currentSlide: 0
   };
 
   componentDidMount() {
@@ -29,7 +30,8 @@ class Dashboard extends React.Component {
       localStorage.setItem("selected", [data, e.target.value]);
     }
     this.setState({
-      selectedNumber: Number(e.target.value)
+      selectedNumber: Number(e.target.value),
+      currentSlide: 1
     });
   };
 
@@ -45,19 +47,40 @@ class Dashboard extends React.Component {
   carousel = () => {
     let slides = [];
     for (let i = 1; i <= this.state.selectedNumber; i++) {
-      slides.push(<div key={i}>{i}</div>);
+      slides.push(<div key={i}></div>);
     }
     return slides;
+  };
+
+  handleDotClick = slide => {
+    this.setState({
+      currentSlide: slide
+    });
+  };
+
+  dots = () => {
+    let dots = [];
+    for (let i = 1; i <= this.state.selectedNumber; i++) {
+      dots.push(
+        <span
+          onClick={() => this.handleDotClick(i)}
+          className="dots"
+          key={i}
+        ></span>
+      );
+    }
+    return dots;
   };
   render() {
     return (
       <DashboardComponent
         handleDropdown={this.handleDropdown}
         handleFinish={this.handleFinish}
-        selectedNumber={this.state.selectedNumber}
+        currentSlide={this.state.currentSlide}
         showOptions={this.showOptions}
         handleLogout={this.handleLogout}
         carousel={this.carousel}
+        dots={this.dots}
       />
     );
   }
