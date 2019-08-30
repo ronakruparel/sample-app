@@ -3,7 +3,8 @@ const DashboardComponent = ({
   handleDropdown,
   selectedNumber,
   handleFinish,
-  showOptions
+  showOptions,
+  handleLogout
 }) => {
   return (
     <div>
@@ -14,6 +15,7 @@ const DashboardComponent = ({
         <h1>{selectedNumber}</h1>
       </div>
       <button onClick={handleFinish}>Finish</button>
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };

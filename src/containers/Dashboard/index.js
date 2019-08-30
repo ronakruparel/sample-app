@@ -37,6 +37,10 @@ class Dashboard extends React.Component {
     let data = localStorage.getItem("selected");
     alert(`You clicked ${data}`);
   };
+
+  handleLogout = () => {
+    this.props.history.push(`${process.env.PUBLIC_URL}/login`);
+  };
   render() {
     return (
       <DashboardComponent
@@ -44,6 +48,7 @@ class Dashboard extends React.Component {
         handleFinish={this.handleFinish}
         selectedNumber={this.state.selectedNumber}
         showOptions={this.showOptions}
+        handleLogout={this.handleLogout}
       />
     );
   }
