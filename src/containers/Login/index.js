@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import environments from "../../environments/index";
+import { LoginComponent } from "../../components";
 class Login extends React.Component {
   state = {
     username: "",
@@ -44,24 +45,12 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>Username</label>
-        <input
-          type="text"
-          name="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.handleSubmit}>Submit</button>
-      </div>
+      <LoginComponent
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        username={this.state.username}
+        password={this.state.password}
+      />
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { DashboardComponent } from "../../components";
 class Dashboard extends React.Component {
   state = {
     selectedNumber: 1
@@ -38,15 +39,12 @@ class Dashboard extends React.Component {
   };
   render() {
     return (
-      <div>
-        <div>
-          <select onChange={this.handleDropdown}>{this.showOptions()}</select>
-        </div>
-        <div>
-          <h1>{this.state.selectedNumber}</h1>
-        </div>
-        <button onClick={this.handleFinish}>Finish</button>
-      </div>
+      <DashboardComponent
+        handleDropdown={this.handleDropdown}
+        handleFinish={this.handleFinish}
+        selectedNumber={this.state.selectedNumber}
+        showOptions={this.showOptions}
+      />
     );
   }
 }
