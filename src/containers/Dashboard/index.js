@@ -35,11 +35,19 @@ class Dashboard extends React.Component {
 
   handleFinish = () => {
     let data = localStorage.getItem("selected");
-    alert(`You clicked ${data}`);
+    alert(`You clicked ${data ? data : "no number"}`);
   };
 
   handleLogout = () => {
     this.props.history.push(`${process.env.PUBLIC_URL}/login`);
+  };
+
+  carousel = () => {
+    let slides = [];
+    for (let i = 1; i <= this.state.selectedNumber; i++) {
+      slides.push(<div key={i}>{i}</div>);
+    }
+    return slides;
   };
   render() {
     return (
@@ -49,6 +57,7 @@ class Dashboard extends React.Component {
         selectedNumber={this.state.selectedNumber}
         showOptions={this.showOptions}
         handleLogout={this.handleLogout}
+        carousel={this.carousel}
       />
     );
   }

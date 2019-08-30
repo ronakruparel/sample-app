@@ -1,22 +1,24 @@
-import React from "react";
+import React, { Fragment } from "react";
+import "./style.css";
 const DashboardComponent = ({
   handleDropdown,
   selectedNumber,
   handleFinish,
   showOptions,
-  handleLogout
+  handleLogout,
+  carousel
 }) => {
   return (
-    <div>
+    <Fragment>
       <div>
-        <select onChange={handleDropdown}>{showOptions()}</select>
+        <div>
+          <select onChange={handleDropdown}>{showOptions()}</select>
+        </div>
+        <div className="carousel">{carousel()}</div>
+        <button onClick={handleFinish}>Finish</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
-      <div>
-        <h1>{selectedNumber}</h1>
-      </div>
-      <button onClick={handleFinish}>Finish</button>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    </Fragment>
   );
 };
 export default DashboardComponent;
