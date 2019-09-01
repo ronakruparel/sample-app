@@ -1,0 +1,43 @@
+.loginWrapper {
+  display: block;
+  width: 400px;
+  height: 400px;
+  margin: 60px auto;
+
+  box-shadow: 2px 2px 8px 2px gray;
+}
+.logo {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 87px;
+  padding: 10px;
+}
+label {
+  display: block;
+}
+.inputWrapper {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+}
+input {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 2px;
+  width: 250px;
+  margin: 10px 0;
+}
+.loginButton {
+  display: block;
+  width: 80px;
+  height: 30px;
+  position: relative;
+  margin: 0 auto;
+  color: #fa595f;
+  font-weight: bold;
+}
+h2 {
+  text-align: center;
+}
