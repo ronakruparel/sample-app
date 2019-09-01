@@ -8,12 +8,14 @@ class Dashboard extends React.Component {
   };
 
   componentDidMount() {
+    //if not authenticated log out user
     let token = localStorage.getItem("isAuthenticated");
     if (!token) {
       this.props.history.push(`${process.env.PUBLIC_URL}/login`);
     }
   }
 
+  //Create Option list of size 20
   showOptions = () => {
     let options = [];
     for (let i = 1; i <= 20; i++) {
@@ -22,13 +24,17 @@ class Dashboard extends React.Component {
     return options;
   };
 
+  //handle change of option
   handleDropdown = e => {
+    //maintain user's history of click
     let data = localStorage.getItem("selected");
     if (!data) {
       localStorage.setItem("selected", [e.target.value]);
     } else {
       localStorage.setItem("selected", [data, e.target.value]);
     }
+
+    //Change the number of slides to be displayed
     this.setState({
       selectedNumber: Number(e.target.value),
       currentSlide: 1
@@ -44,6 +50,7 @@ class Dashboard extends React.Component {
     this.props.history.push(`${process.env.PUBLIC_URL}/login`);
   };
 
+  //Generate div's of slides
   carousel = () => {
     let slides = [];
     for (let i = 1; i <= this.state.selectedNumber; i++) {
@@ -52,12 +59,7 @@ class Dashboard extends React.Component {
     return slides;
   };
 
-  handleDotClick = slide => {
-    this.setState({
-      currentSlide: slide
-    });
-  };
-
+  //Genarate span's for dots
   dots = () => {
     let dots = [];
     for (let i = 1; i <= this.state.selectedNumber; i++) {
@@ -71,6 +73,14 @@ class Dashboard extends React.Component {
     }
     return dots;
   };
+
+  //Handle slide change
+  handleDotClick = slide => {
+    this.setState({
+      currentSlide: slide
+    });
+  };
+
   render() {
     return (
       <DashboardComponent

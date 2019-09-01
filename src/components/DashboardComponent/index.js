@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import "./style.css";
+
 const DashboardComponent = ({
   handleDropdown,
   currentSlide,
@@ -11,30 +12,35 @@ const DashboardComponent = ({
 }) => {
   return (
     <Fragment>
-      <div>
-        <div>
-          <select onChange={handleDropdown}>
-            <option selected="selected">Select</option>
-            {showOptions()}
-          </select>
-        </div>
+      <div className="header">
         <button onClick={handleLogout} className="logout">
           Logout
         </button>
-        {currentSlide > 0 && (
-          <div className="carousel">
-            {
-              <div>
-                {carousel()}
-                {currentSlide}
-              </div>
-            }
-            <div className="dotsWrappper">{dots()}</div>
-          </div>
-        )}
-
-        <button onClick={handleFinish}>Finish</button>
       </div>
+      <div>
+        <select onChange={handleDropdown}>
+          <option>Select</option>
+          {showOptions()}
+        </select>
+      </div>
+      {currentSlide > 0 && (
+        <div className="carousel">
+          {
+            <div>
+              {carousel()}
+              <h1> Slide {currentSlide}</h1>
+            </div>
+          }
+          <div className="dotsWrappper">{dots()}</div>
+        </div>
+      )}
+
+      {currentSlide > 0 && (
+        <button className="finishButton" onClick={handleFinish}>
+          Finish
+        </button>
+      )}
+      <div className="footer">Copyright @2019</div>
     </Fragment>
   );
 };
